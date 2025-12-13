@@ -11,16 +11,16 @@ module.exports = {
       message: "git pull"
     }
   }, {
-     method: "shell.run",
-     params: {
-       venv: "env",
-       path: "app",
+    method: "shell.run",
+    params: {
+      venv: "env",
+      path: "app",
        message: [
         "uv pip uninstall diffusers",
         "uv pip install -r requirements.txt",
-        "pip uninstall hf-xet" // stalling download for some reason
-        // "uv pip install hf-xet==1.2.0"
+        // "uv pip install hf_xet"  // stalls model downloads for me.  delete the 1st '//' to install on update
       ]
     }
-  }]
+  },   
+ ]
 }
