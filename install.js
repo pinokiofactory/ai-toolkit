@@ -14,7 +14,7 @@ module.exports = {
       method: "shell.run",
       params: {
         message: [
-          "git clone https://github.com/ostris/ai-toolkit.git app",
+          "git clone https://github.com/BuffaloBuffaloBuffaloBuffalo/ai-toolkit-perceptual.git app",
         ]
       }
     },
