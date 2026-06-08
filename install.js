@@ -1,4 +1,7 @@
 module.exports = {
+  requires: {
+    bundle: "ai",
+  },
   run: [
     // nvidia GPU support only
     {
@@ -9,7 +12,6 @@ module.exports = {
      }, 
       next: null
     },
-
     {
       method: "shell.run",
       params: {
@@ -18,18 +20,6 @@ module.exports = {
         ]
       }
     },
-
-    {
-      method: "script.start",
-      params: {
-        uri: "torch.js",
-        params: {
-          venv: "env",
-          path: "app",
-        }
-      }
-    },
-
     {
       method: "shell.run",
       params: {
@@ -41,6 +31,31 @@ module.exports = {
         ]
       }
     },
+    {
+      method: "script.start",
+      params: {
+        uri: "torch.js",
+        params: {
+          venv: "env",
+          path: "app",
+        }
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        path: "app/ui",
+        message: [
+          "npm install",
+          "npm run update_db",
+          "npm run build"
+        ],
+        on: [{
+          event: "/error:/i",
+          break: false
+        }]
+      }
+    }
   ]
 }
 
