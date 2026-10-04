@@ -5,7 +5,7 @@ module.exports = {
   run: [
     // nvidia GPU support only
     {
-     when: "{{gpu !== 'nvidia'}}",
+     when: "{{platform !== 'darwin' && gpu !== 'nvidia'}}",
      method: "notify",
      params: {
        html: "This app requires an NVIDIA GPU."
